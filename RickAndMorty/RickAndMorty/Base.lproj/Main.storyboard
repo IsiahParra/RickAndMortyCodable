@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Characters List Table View Controller-->
         <scene sceneID="Sy9-cn-Qi8">
             <objects>
-                <tableViewController id="guF-96-C90" sceneMemberID="viewController">
+                <tableViewController id="guF-96-C90" customClass="CharactersListTableViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="oJB-fl-VJz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="t3a-Bg-DlD" style="IBUITableViewCellStyleDefault" id="EzO-xv-tIr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="characterCell" textLabel="t3a-Bg-DlD" style="IBUITableViewCellStyleDefault" id="EzO-xv-tIr" customClass="CharacterTableViewCell" customModule="RickAndMorty" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EzO-xv-tIr" id="Vb3-Qe-dyE">
@@ -39,6 +39,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="characterNameLabel" destination="t3a-Bg-DlD" id="M6X-ce-1wk"/>
                                     <segue destination="ZzU-lK-x4v" kind="show" id="00U-dg-uBg"/>
                                 </connections>
                             </tableViewCell>
@@ -54,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="879.71014492753625" y="97.767857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Detail View Controller-->
         <scene sceneID="K98-c1-Khd">
             <objects>
-                <viewController id="ZzU-lK-x4v" sceneMemberID="viewController">
+                <viewController id="ZzU-lK-x4v" customClass="CharacterDetailViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C0w-gF-0es">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

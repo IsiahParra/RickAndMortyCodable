@@ -13,6 +13,7 @@ struct TopLevelDictionary: Decodable {
     }
     let results: [ResultsDictionary]
 }
+// endPoint1
 
 struct ResultsDictionary: Decodable {
     private enum CodingKeys: String, CodingKey {
@@ -35,6 +36,8 @@ struct ResultsDictionary: Decodable {
     let location: [LocationDictionary]
     let image: String
 }
+//endPoint 2
+
 struct OriginDictionary: Decodable {
     private enum CodingKeys: String, CodingKey {
         case name
@@ -48,3 +51,4 @@ struct LocationDictionary: Decodable {
     }
     let name: String
 }
+//endpoint 3

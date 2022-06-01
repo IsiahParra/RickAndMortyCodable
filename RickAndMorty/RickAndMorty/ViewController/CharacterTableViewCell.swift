@@ -9,15 +9,33 @@ import UIKit
 
 class CharacterTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var characterNameLabel: UILabel!
+    
+    
+    func updateViews(with name: String) {
+        NetworkController.fetchCharacter(with: name) { results in
+            switch results {
+            case.success(let character):
+                self.fetchCharacter(for: character)
+            case.failure(let error):
+                print("theres been an .... *BurRrP* error Morty!", error.errorDescription!)
+            }
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    
+    func fetchCharacter(for character: ResultsDictionary) {
+        NetworkController.fetchCharacter(with: character.name) { results in
+            switch results {
+            case.success(let character):
+                DispatchQueue.main.async {
+                    self.characterNameLabel.text = character.name
+                }
+            case.failure(let error):
+                print("theres been an .... *BurRrP* error Morty!", error.errorDescription!)
+            }
+        }
     }
+    
 
-}
+}// End of class
