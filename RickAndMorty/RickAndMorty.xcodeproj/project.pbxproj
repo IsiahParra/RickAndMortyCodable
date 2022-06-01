@@ -17,6 +17,7 @@
 		9D095E0B2847C4CF00181E7F /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D095E0A2847C4CF00181E7F /* CharacterDetailViewController.swift */; };
 		9D095E0D2847C4EA00181E7F /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D095E0C2847C4EA00181E7F /* CharacterTableViewCell.swift */; };
 		9D095E0F2847C50800181E7F /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D095E0E2847C50800181E7F /* NetworkController.swift */; };
+		9D095E112847C80500181E7F /* ResultsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D095E102847C80500181E7F /* ResultsError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		9D095E0A2847C4CF00181E7F /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		9D095E0C2847C4EA00181E7F /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		9D095E0E2847C50800181E7F /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		9D095E102847C80500181E7F /* ResultsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				9D095E0E2847C50800181E7F /* NetworkController.swift */,
+				9D095E102847C80500181E7F /* ResultsError.swift */,
 			);
 			path = NetworkController;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D095E0B2847C4CF00181E7F /* CharacterDetailViewController.swift in Sources */,
+				9D095E112847C80500181E7F /* ResultsError.swift in Sources */,
 				9D095DEF2847B86700181E7F /* AppDelegate.swift in Sources */,
 				9D095E092847C4B000181E7F /* CharactersListTableViewController.swift in Sources */,
 				9D095E052847C44E00181E7F /* Characters.swift in Sources */,

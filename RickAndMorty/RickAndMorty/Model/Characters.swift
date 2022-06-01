@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct TopLevelDictionary {
+struct TopLevelDictionary: Decodable {
     private enum CodingKeys: String,CodingKey {
         case results
     }
     let results: [ResultsDictionary]
 }
 
-struct ResultsDictionary {
+struct ResultsDictionary: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
@@ -35,14 +35,14 @@ struct ResultsDictionary {
     let location: [LocationDictionary]
     let image: String
 }
-struct OriginDictionary {
+struct OriginDictionary: Decodable {
     private enum CodingKeys: String, CodingKey {
         case name
     }
     let name: String
 }
 
-struct LocationDictionary {
+struct LocationDictionary: Decodable {
     private enum CodingKeys: String, CodingKey {
         case name
     }
