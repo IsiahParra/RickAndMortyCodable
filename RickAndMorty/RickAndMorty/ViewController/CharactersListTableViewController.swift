@@ -60,4 +60,15 @@ class CharactersListTableViewController: UITableViewController {
                     }
                 }
             }
-}
+    
+}// End of class
+
+//MARK: TO DO FOR DAY 2
+
+// figure out why our images are at a default size until they reQue to the new size
+
+// we need pagination to view more than 20 characters
+
+//we need our search bar on the table view controller
+
+
