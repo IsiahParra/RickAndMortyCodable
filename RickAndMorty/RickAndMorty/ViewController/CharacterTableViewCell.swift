@@ -11,31 +11,60 @@ class CharacterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var characterNameLabel: UILabel!
     
-    
-    func updateViews(with name: String) {
-        NetworkController.fetchCharacter(with: name) { results in
-            switch results {
-            case.success(let character):
-                self.fetchCharacter(for: character)
-            case.failure(let error):
-                print("theres been an .... *BurRrP* error Morty!", error.errorDescription!)
-            }
+    var image: UIImage? {
+        didSet{
+            setNeedsUpdateConfiguration()
         }
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.image = nil
+    }
     
+    func setConfiguration(with character: ResultsDictionary) {
+        fetchImage(for: character)
+       var configuration = defaultContentConfiguration()
+        configuration.text = character.name
+        configuration.secondaryText = character.species
+        configuration.imageProperties.maximumSize = CGSize(width: 125, height: 160)
+        contentConfiguration = configuration
+    }
     
-    func fetchCharacter(for character: ResultsDictionary) {
-        NetworkController.fetchCharacter(with: character.name) { results in
-            switch results {
-            case.success(let character):
+    func fetchImage(for character: ResultsDictionary) {
+        guard let imageString = character.imageString else {return}
+        NetworkController.fetchImage(for: imageString) { result in
+            switch result {
+            case.success(let image):
                 DispatchQueue.main.async {
-                    self.characterNameLabel.text = character.name
+                    self.image = image
                 }
             case.failure(let error):
-                print("theres been an .... *BurRrP* error Morty!", error.errorDescription!)
-            }
+                    print("there has been an error", error.errorDescription!)
+            
         }
     }
+//
+//
+//    func fetchCharacter(for character: ResultsDictionary) {
+//        NetworkController.fetchCharacter(with: character.name) { results in
+//            switch results {
+//            case.success(let character):
+//                DispatchQueue.main.async {
+//                    self.characterNameLabel.text = character.name
+//                }
+//            case.failure(let error):
+//                print("theres been an .... *BurRrP* error Morty!", error.errorDescription!)
+//            }
+//        }
+//    }
     
-
+    }
+    override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
+        guard var configuration = contentConfiguration as? UIListContentConfiguration else { return }
+        configuration.image = self.image
+        contentConfiguration = configuration
+    }
+    
+    
 }// End of class

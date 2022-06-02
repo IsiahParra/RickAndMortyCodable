@@ -10,11 +10,22 @@ import UIKit
 class CharactersListTableViewController: UITableViewController {
 
     var characterList: [ResultsDictionary] = []
+    var topLevelDictionary: TopLevelDictionary?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        NetworkController.fetchTopLevelDictionary(with: URL(string: "https://rickandmortyapi.com/api/character")!) { [weak self] result in
+            switch result {
+            case.success(let topLevelDictionary):
+                self?.topLevelDictionary = topLevelDictionary
+                self?.characterList = topLevelDictionary.results
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case.failure(let error):
+                print("Oh no there has been an error!", error.errorDescription!)
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -26,8 +37,10 @@ class CharactersListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as? CharacterTableViewCell else {return UITableViewCell()}
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as? CharacterTableViewCell else {return UITableViewCell()}
+        
         let character = characterList[indexPath.row]
+        cell.setConfiguration(with: character)
         
         return cell
     }
@@ -37,8 +50,14 @@ class CharactersListTableViewController: UITableViewController {
 
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    
-
+        if segue.identifier == "segueVC" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                if let destination = segue.destination as? CharacterDetailViewController {
+                    let characterToSend = characterList[indexPath.row]
+                    destination.character = characterToSend
+                    
+                        }
+                    }
+                }
+            }
 }

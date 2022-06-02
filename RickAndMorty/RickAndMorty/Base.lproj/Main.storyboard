@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="guF-96-C90">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rfw-YP-SFM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -40,7 +40,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="characterNameLabel" destination="t3a-Bg-DlD" id="M6X-ce-1wk"/>
-                                    <segue destination="ZzU-lK-x4v" kind="show" id="00U-dg-uBg"/>
+                                    <segue destination="ZzU-lK-x4v" kind="show" identifier="segueVC" id="00U-dg-uBg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -129,6 +129,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nS3-Ok-AGw"/>
+                    <connections>
+                        <outlet property="characterImageView" destination="YW4-O3-haG" id="ihs-7G-wpU"/>
+                        <outlet property="genderLabel" destination="WTn-AV-Zem" id="OBT-iD-aYC"/>
+                        <outlet property="idLabel" destination="IYI-Gn-Dhq" id="5Gd-Cp-Fqa"/>
+                        <outlet property="locationLabel" destination="LeF-aC-VXQ" id="pQg-OC-hs8"/>
+                        <outlet property="nameLabel" destination="0lk-32-B3E" id="teC-up-TLG"/>
+                        <outlet property="originLabel" destination="lRI-SW-mYs" id="zxv-AU-I6p"/>
+                        <outlet property="speciesLabel" destination="BrE-Qm-E6W" id="Wjx-0T-YmI"/>
+                        <outlet property="statusLabel" destination="RpE-jj-ZcS" id="Cx7-Us-q9s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5j-0w-sfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
