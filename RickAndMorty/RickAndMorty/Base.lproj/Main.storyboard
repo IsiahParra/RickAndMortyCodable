@@ -16,6 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="separatorColor" red="0.25112498280000001" green="0.97854373549999996" blue="0.43297967100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="ojg-oA-iYl">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -38,6 +39,8 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.25112498280000001" green="0.97854373549999996" blue="0.43297967100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="characterNameLabel" destination="t3a-Bg-DlD" id="M6X-ce-1wk"/>
                                     <segue destination="ZzU-lK-x4v" kind="show" identifier="segueVC" id="00U-dg-uBg"/>
@@ -50,6 +53,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hFy-Uv-Pge"/>
+                    <connections>
+                        <outlet property="characterSearchBar" destination="ojg-oA-iYl" id="Q3V-fI-AUE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qI-zc-L20" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

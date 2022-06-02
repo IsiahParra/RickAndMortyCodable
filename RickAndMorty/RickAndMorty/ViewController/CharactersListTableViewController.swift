@@ -12,8 +12,11 @@ class CharactersListTableViewController: UITableViewController {
     var characterList: [ResultsDictionary] = []
     var topLevelDictionary: TopLevelDictionary?
     
+    @IBOutlet weak var characterSearchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        characterSearchBar.delegate = self
         NetworkController.fetchTopLevelDictionary(with: URL(string: "https://rickandmortyapi.com/api/character")!) { [weak self] result in
             switch result {
             case.success(let topLevelDictionary):
@@ -89,12 +92,22 @@ class CharactersListTableViewController: UITableViewController {
     
 }// End of class
 
-//MARK: TO DO FOR DAY 2
-
-// figure out why our images are at a default size until they reQue to the new size
-
-// we need pagination to view more than 20 characters
-
-//we need our search bar on the table view controller
+extension CharactersListTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+      guard let url = URL(string: "https://rickandmortyapi.com/api/character?name=\(searchText)") else {return}
+        NetworkController.fetchTopLevelDictionary(with: url) { [weak self] result in
+                switch result {
+                case.success(let topLevelDictionary):
+                    self?.topLevelDictionary = topLevelDictionary
+                    self?.characterList = topLevelDictionary.results
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case.failure(let error):
+                    print("Oh no there has been an error!", error.errorDescription!)
+                }
+        }
+    }
+}
 
 

@@ -16,10 +16,7 @@ class CharacterTableViewCell: UITableViewCell {
             setNeedsUpdateConfiguration()
         }
     }
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.image = nil
-    }
+    
     
     func setConfiguration(with character: ResultsDictionary) {
         fetchImage(for: character)
