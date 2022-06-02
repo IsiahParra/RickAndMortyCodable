@@ -32,16 +32,6 @@ class CharacterDetailViewController: UIViewController {
             updateViews()
         }
     }
-    var origin: OriginDictionary? {
-        didSet{
-            updateViews()
-        }
-    }
-    var location: LocationDictionary? {
-        didSet{
-            updateViews()
-        }
-    }
     
     func updateViews() {
         guard let character = character else {
@@ -49,24 +39,23 @@ class CharacterDetailViewController: UIViewController {
         }
         
                 //fetch the image
-        NetworkController.fetchImage(for: character.imageString ?? "") { results in
-                    switch results{
+        NetworkController.fetchImage(for: character.imageString ?? "Photo Unavailable") { [weak self] results in
+                    switch results {
                     case.success(let image):
                         DispatchQueue.main.async {
-                            self.characterImageView.image =  image
+                            self?.characterImageView.image =  image
+                            self?.nameLabel.text = character.name
+                            self?.locationLabel.text = "Location: \(character.location.name)"
+                            self?.speciesLabel.text = character.species
+                            self?.genderLabel.text = character.gender
+                            self?.originLabel.text = "Origin: \(character.origin.name)"
+                            self?.idLabel.text = "Character No: \(character.id)"
+                            self?.statusLabel.text = "Status: \(character.status)"
                         }
                     case .failure(let error):
                         print("There has been an error", error.errorDescription!)
                     }
                 }
-        self.character = character
-        self.nameLabel.text = character.name
-        self.locationLabel.text = self.location?.name
-        self.speciesLabel.text = character.species
-        self.genderLabel.text = character.gender
-        self.originLabel.text = self.origin?.name
-        self.idLabel.text = "\(character.id)"
-        self.statusLabel.text = character.status
             }
     
 }//end of class

@@ -10,7 +10,7 @@ import UIKit
 
 class NetworkController {
     
-    private static let baseURLString = "https://rickandmortyapi.com/api"
+//    private static let baseURLString = "https://rickandmortyapi.com/api"
     
     //endpoint 1
     static func fetchTopLevelDictionary(with url: URL, completion: @escaping(Result<TopLevelDictionary, ResultError>) -> Void) {
